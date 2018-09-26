@@ -29,8 +29,8 @@ public class OI {
 
 	public static Joystick joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 
-	public Button joystickActuatorDown = new JoystickButton(joystick, 4);
-	public Button joystickActuatorUp = new JoystickButton(joystick, 5);
+	//public Button joystickActuatorDown = new JoystickButton(joystick, 4);
+	//public Button joystickActuatorUp = new JoystickButton(joystick, 5);
 
 	public Button joystickElevatorUp = new JoystickButton(joystick, 6);
 	public Button joystickElevatorDown = new JoystickButton(joystick, 7);
@@ -49,8 +49,8 @@ public class OI {
 	// commands the same as any other Button.
 
 	public OI() {
-		joystickActuatorUp.whileHeld(new ActuatorUp());
-		joystickActuatorDown.whileHeld(new ActuatorDown());
+		//joystickActuatorUp.whileHeld(new ActuatorUp());
+		//joystickActuatorDown.whileHeld(new ActuatorDown());
 
 		joystickElevatorUp.whileHeld(new ArmUp());
 		joystickElevatorDown.whileHeld(new ArmDown());

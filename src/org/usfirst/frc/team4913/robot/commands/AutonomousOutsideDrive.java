@@ -51,7 +51,7 @@ public class AutonomousOutsideDrive extends Command {
 		requires(driveSubsystem);
 		requires(grabber);
 		requires(rotator);
-		requires(actuator);
+		//requires(actuator);
 //		requires(elevator);
 		this.direction = direction;
 		this.deliverCube = deliverCube;
@@ -68,9 +68,9 @@ public class AutonomousOutsideDrive extends Command {
 		double timerVal = timer.get();
 		
 		if(timerVal < actuatorTime)
-			actuator.up();
+			//actuator.up();
 		else if (timerVal >= actuatorTime && timerVal < go_straight) {
-			actuator.stop();
+			//actuator.stop();
 			driveSubsystem.arcadeDrive(-0.7, 0.2);
 		}
 		else{

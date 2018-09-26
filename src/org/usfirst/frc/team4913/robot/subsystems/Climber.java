@@ -16,10 +16,11 @@ public class Climber extends Subsystem {
 	// Left Trigger from 0 to 1
 	// Right Trigger from 0 to 1
 
-	WPI_TalonSRX num1Motor = new WPI_TalonSRX(RobotMap.CLIMBER_NUM1_MOTOR_PORT);
-	WPI_TalonSRX num2Motor = new WPI_TalonSRX(RobotMap.CLIMBER_NUM2_MOTOR_PORT);
+	//WPI_TalonSRX num1Motor = new WPI_TalonSRX(RobotMap.CLIMBER_NUM1_MOTOR_PORT);
+	WPI_TalonSRX climberMotor = new WPI_TalonSRX(RobotMap.CLIMBER_MOTOR_ID);
 
-	public static double UP_SPEEDCONSTANT = 1.0;
+	public static double CLIMB_SPEEDCONSTANT = 1.0;
+	public static double UP_SPEEDCONSTANT = 0.3;
 	public static double DOWN_SPEEDCONSTANT = -0.5;
 	public int currentHeight = 0;
 
@@ -30,23 +31,25 @@ public class Climber extends Subsystem {
 	}
 
 	public void hookUp() {
-		num1Motor.set(UP_SPEEDCONSTANT);
+		//num1Motor.set(UP_SPEEDCONSTANT);
+		climberMotor.set(UP_SPEEDCONSTANT);
 		currentHeight++;
 	}
 
 	public void hookDown() {
 		if(currentHeight > 5) {
-		num1Motor.set(DOWN_SPEEDCONSTANT);
+		//num1Motor.set(DOWN_SPEEDCONSTANT);
+		climberMotor.set(DOWN_SPEEDCONSTANT);
 		currentHeight--;
 		}
 	}
 
 	public void robotUp() {
-		num2Motor.set(UP_SPEEDCONSTANT);
+		climberMotor.set(CLIMB_SPEEDCONSTANT);
 	}
 
 	public void stop() {
-		num1Motor.set(0);
-		num2Motor.set(0);
+		//num1Motor.set(0);
+		climberMotor.set(0);
 	}
 }

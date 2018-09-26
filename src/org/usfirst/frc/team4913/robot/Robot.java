@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4913.robot.commands.*;
-import org.usfirst.frc.team4913.robot.subsystems.Actuator;
+//import org.usfirst.frc.team4913.robot.subsystems.Actuator;
 import org.usfirst.frc.team4913.robot.subsystems.Climber;
 import org.usfirst.frc.team4913.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team4913.robot.subsystems.Arm;
@@ -37,7 +37,7 @@ public class Robot extends TimedRobot {
 	public static final DriveSubsystem driveSubsystem = new DriveSubsystem();
 	public static final Grabber grabber = new Grabber();
 	public static final Rotator rotator = new Rotator();
-	public static final Actuator actuator = new Actuator();
+	//public static final Actuator actuator = new Actuator();
 	public static final Arm arm = new Arm();
 	public static final Climber climber = new Climber();
 	public static OI m_oi;
@@ -78,7 +78,7 @@ public class Robot extends TimedRobot {
 				AutonomousOutsideDrive(TURN.LEFT, true, false));
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData(arm);
-		SmartDashboard.putData(actuator);
+		//SmartDashboard.putData(actuator);
 		SmartDashboard.putData(rotator);
 		SmartDashboard.putData(grabber);
 		SmartDashboard.putData(climber);

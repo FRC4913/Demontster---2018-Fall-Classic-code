@@ -15,8 +15,9 @@ public class Grabber extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	Spark grabberMotor = new Spark(RobotMap.GRABBER_MOTOR_PORT); //0 is a placeholder 
-	DigitalInput grabberSwitch = new DigitalInput(8);//8 is a placeholder
-	//True is pressed, False is unpressed
+	DigitalInput grabberSwitch = new DigitalInput(2);
+	//Limit switch is Normally Closed, so unpressed returns True, pressed returns False
+	//True is unpressed, False is pressed
 	public static double CLOSE_SPEEDCONSTANT = 0.2; // IN
 	public static double OPEN_SPEEDCONSTANT = - 0.2; // OUT
 	public static double STOP_SPEEDCONSTANT = 0.0;
@@ -27,18 +28,21 @@ public class Grabber extends Subsystem {
 	}
 
 	public void close() {
-		grabberMotor.set(CLOSE_SPEEDCONSTANT);
+		if(grabberSwitch.get() == true) //limit switch is not pressed
+			grabberMotor.set(CLOSE_SPEEDCONSTANT);
+		else //limit switch is pressed
+			grabberMotor.set(STOP_SPEEDCONSTANT);
 	}
 
 	public void open() {
-		if(grabberSwitch.get()) //limit switch is pressed
-			grabberMotor.stopMotor();
+		if(grabberSwitch.get() == false) //limit switch is pressed
+			grabberMotor.set(STOP_SPEEDCONSTANT);
 		else //limit switch is unpressed
 			grabberMotor.set(OPEN_SPEEDCONSTANT);
 		 
 	}
 
 	public void stop() {
-		grabberMotor.stopMotor();
+		grabberMotor.set(STOP_SPEEDCONSTANT);
 	}
 }
