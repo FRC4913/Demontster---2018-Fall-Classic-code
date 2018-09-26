@@ -65,8 +65,8 @@ public class AutonomousMiddleDrive extends Command {
 			driveSubsystem.stopMotor();
 		else if(timerVal >= waitTime && timerVal < actuatorTime)
 			actuator.up();
-		else if (timerVal >= actuatorTime && timerVal < initFwdTime) {
-			actuator.stop();
+		else if(timerVal >= actuatorTime && timerVal < initFwdTime) {
+			//actuator.stop();
 			driveSubsystem.arcadeDrive(-0.7, 0.2);
 		}
 		else if (timerVal >= actuatorTime && timerVal < initFwdTime)

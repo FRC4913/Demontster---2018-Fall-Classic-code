@@ -34,18 +34,18 @@ public class AutonomousOutsideDrive extends Command {
 
 	private double visionSidesTime = GO_STRAIGHT + VISION_TIME;
 //	private double actuatorUpTime = ACTUATOR_UP_TIME;=
-	private double actuatorTime = ACTUATOR_TIME;
-	private double go_straight = actuatorTime + GO_STRAIGHT;
-	private double turnTime = go_straight + TURN_90_TIME;
-	private double approachTime = turnTime + APPROCH_TIME;
-	private double rotatorTime = approachTime + ROTATOR_TIME;
-	private double rotatorWaitTime = approachTime + ROTATOR_WAIT_TIME;
-	private double deliverTime = rotatorWaitTime + DELIVER_CUBE;
-	private double go_straight_sec = go_straight + GO_STRAIGHT_SECOND;
-	private double across_field_turn_1 = go_straight_sec + TURN_90_TIME;
-	private double across_field_straight = across_field_turn_1 + ACROSS_FIELD_TIME;
-	private double across_field_turn_2 = across_field_straight + TURN_90_TIME;
-	private double across_field_approachTime = across_field_turn_2 + ACROSS_FIELD_APPROACH_TIME;
+	private double actuatorTime = ACTUATOR_TIME;// == 1.6
+	private double go_straight = actuatorTime + GO_STRAIGHT;// == 1.6 + 3.0 == 4.6
+	private double turnTime = go_straight + TURN_90_TIME;// == 4.6 + 0.4 == 5.0
+	private double approachTime = turnTime + APPROCH_TIME;// == 5.0 + 1.0 == 6.0
+	private double rotatorTime = approachTime + ROTATOR_TIME;// == 6.0 + 0.45 == 6.45
+	private double rotatorWaitTime = approachTime + ROTATOR_WAIT_TIME;// == 6.0 + 1.5 == 7.5
+	private double deliverTime = rotatorWaitTime + DELIVER_CUBE;// == 7.5 + 3.0 == 10.5
+	private double go_straight_sec = go_straight + GO_STRAIGHT_SECOND;// == 4.6 + 1.5 == 6.1
+	private double across_field_turn_1 = go_straight_sec + TURN_90_TIME;// == 6.1 + 0.4 == 6.5
+	private double across_field_straight = across_field_turn_1 + ACROSS_FIELD_TIME;// == 6.5 + 1.0 == 7.5
+	private double across_field_turn_2 = across_field_straight + TURN_90_TIME;// == 7.5 + 0.4 == 7.9
+	private double across_field_approachTime = across_field_turn_2 + ACROSS_FIELD_APPROACH_TIME;// == 7.9 + 0.5 == 8.4
 
 	public AutonomousOutsideDrive(TURN direction, boolean deliverCube, boolean useVision) {
 		requires(driveSubsystem);
@@ -53,6 +53,7 @@ public class AutonomousOutsideDrive extends Command {
 		requires(rotator);
 		//requires(actuator);
 //		requires(elevator);
+		requires(arm);
 		this.direction = direction;
 		this.deliverCube = deliverCube;
 		this.useVision = useVision;
@@ -69,6 +70,7 @@ public class AutonomousOutsideDrive extends Command {
 		
 		if(timerVal < actuatorTime)
 			//actuator.up();
+			arm.up();
 		else if (timerVal >= actuatorTime && timerVal < go_straight) {
 			//actuator.stop();
 			driveSubsystem.arcadeDrive(-0.7, 0.2);
@@ -77,6 +79,7 @@ public class AutonomousOutsideDrive extends Command {
 			if (deliverCube) {
 			if (timerVal >= GO_STRAIGHT && timerVal < turnTime) {
 //				elevator.up();
+				arm.up();
 				if (direction == Robot.TURN.LEFT) {
 					driveSubsystem.arcadeDrive(0.0, -0.9);// turn left
 				} else {
