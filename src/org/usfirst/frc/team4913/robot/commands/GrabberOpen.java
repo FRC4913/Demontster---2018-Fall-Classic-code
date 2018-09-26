@@ -1,10 +1,6 @@
 package org.usfirst.frc.team4913.robot.commands;
 
-import static org.usfirst.frc.team4913.robot.OI.joystick;
-import static org.usfirst.frc.team4913.robot.OI.xboxController;
 import static org.usfirst.frc.team4913.robot.Robot.grabber;
-
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -27,18 +23,11 @@ public class GrabberOpen extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (xboxController.getTriggerAxis(Hand.kLeft) >= TRIGGER_THRESHOLD
-				|| xboxController.getTriggerAxis(Hand.kRight) >= TRIGGER_THRESHOLD || joystick.getRawButton(1)) {
 			grabber.open();
-		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (xboxController.getTriggerAxis(Hand.kLeft) < TRIGGER_THRESHOLD
-				&& xboxController.getTriggerAxis(Hand.kRight) < TRIGGER_THRESHOLD && !joystick.getRawButton(1)) {
-			return true;
-		}
 		return false;
 	}
 

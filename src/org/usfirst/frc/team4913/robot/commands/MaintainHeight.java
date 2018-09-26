@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class HookDown extends Command {
+public class MaintainHeight extends Command {
 
-	public HookDown() {
+	public MaintainHeight() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		super("HookDown");
+		super("MaintainHeight");
 		requires(climber);
 	}
 
@@ -22,7 +22,7 @@ public class HookDown extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		climber.hookDown();
+		climber.stableHeight();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

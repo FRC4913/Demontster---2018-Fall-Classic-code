@@ -27,42 +27,22 @@ public class OI {
 	// Button button = new JoystickButton(stick, buttonNumber);
 	public static XboxController xboxController = new XboxController(RobotMap.XBOX_CONTROLLER_PORT);
 
-	public static Joystick joystick = new Joystick(RobotMap.JOYSTICK_PORT);
-
-	//public Button joystickActuatorDown = new JoystickButton(joystick, 4);
-	//public Button joystickActuatorUp = new JoystickButton(joystick, 5);
-
-	public Button joystickElevatorUp = new JoystickButton(joystick, 6);
-	public Button joystickElevatorDown = new JoystickButton(joystick, 7);
+	
 
 	// left and right bumpers
 	public Button xboxButton5 = new JoystickButton(xboxController, 5);
 	public Button xboxButton6 = new JoystickButton(xboxController, 6);
 
-	// public Button joystickRelease = new JoystickButton(joystick, 1);
-	public Button joystickHookUp = new JoystickButton(joystick, 3);
-	public Button joystickClimb = new JoystickButton(joystick, 2);
-	public Button joystickClimberStop = new JoystickButton(joystick, 10);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
+	// commands the same as any other Bu	tton.
 
 	public OI() {
-		//joystickActuatorUp.whileHeld(new ActuatorUp());
-		//joystickActuatorDown.whileHeld(new ActuatorDown());
-
-		joystickElevatorUp.whileHeld(new ArmUp());
-		joystickElevatorDown.whileHeld(new ArmDown());
-
 		xboxButton5.whileHeld(new GrabberClose());
 		//xboxButton6.whileHeld(new BlockRelease());
-		// joystickRelease.whileHeld(new BlockRelease());
 
-		joystickHookUp.whileHeld(new HookUp());
-		joystickHookUp.whenReleased(new HookDown());
-		joystickClimb.whileHeld(new RobotUp());
-		joystickClimberStop.whileHeld(new HookStop());
+		
 		/*
 		 * xboxButton5.toggleWhenActive(new BlockIntake());
 		 * xboxButton6.toggleWhenActive(new BlockIntake());

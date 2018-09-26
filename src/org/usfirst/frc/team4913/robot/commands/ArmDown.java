@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4913.robot.commands;
 
+import static org.usfirst.frc.team4913.robot.OI.xboxController;
 import static org.usfirst.frc.team4913.robot.Robot.arm;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -9,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ArmDown extends Command {
 
+	private static final double TRIGGER_THRESHOLD = 0.1;
 	public ArmDown() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -22,6 +25,7 @@ public class ArmDown extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		if (xboxController.getTriggerAxis(Hand.kRight) >= TRIGGER_THRESHOLD) 
 		arm.down();
 	}
 

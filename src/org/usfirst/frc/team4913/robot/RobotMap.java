@@ -36,7 +36,6 @@ public class RobotMap {
 	public static int VISION_INPUT_9 = 9;
 
 	public static int XBOX_CONTROLLER_PORT = 0;
-	public static int JOYSTICK_PORT = 1;
 	
 	//Encoder Ports
 	public static int ENC_SOURCE_1 = 1;

@@ -81,15 +81,14 @@ public class Robot extends TimedRobot {
 		//SmartDashboard.putData(actuator);
 		SmartDashboard.putData(rotator);
 		SmartDashboard.putData(grabber);
-		SmartDashboard.putData(climber);
+		SmartDashboard.putData(rotator);
 		SmartDashboard.putData(driveSubsystem);
-		SmartDashboard.putData("ElevatorUp", new ArmUp());
-		SmartDashboard.putData("RotatorMove", new RotatorMove());
-		SmartDashboard.putData("BlockIntake", new GrabberOpen());
-		SmartDashboard.putData("BlockRelease", new GrabberClose());
-		SmartDashboard.putData("HookDown", new HookDown());
-		SmartDashboard.putData("HookUp", new HookUp());
-		SmartDashboard.putData("RobotUp", new RobotUp());
+		SmartDashboard.putData("ArmUp", new ArmUp());
+		SmartDashboard.putData("ClimberMove", new ClimberMove());
+		SmartDashboard.putData("GrabberOpen", new GrabberOpen());
+		SmartDashboard.putData("GrabberClose", new GrabberClose());
+		SmartDashboard.putData("RotatorDown", new RotatorDown());
+		SmartDashboard.putData("RotatorUp", new RotatorUp());
 		prefs = Preferences.getInstance();
 	}
 

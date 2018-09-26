@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4913.robot.commands;
 
 import static org.usfirst.frc.team4913.robot.OI.xboxController;
-import static org.usfirst.frc.team4913.robot.Robot.rotator;
+import static org.usfirst.frc.team4913.robot.Robot.climber;
 
 import org.usfirst.frc.team4913.robot.RobotMap;
 
@@ -12,16 +12,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RotatorMove extends Command {
+public class ClimberMove extends Command {
 	
 	private Encoder enc;
 	private static final int DISTANCE_PER_PULSE = 1;
 	
-	public RotatorMove() {
+	public ClimberMove() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		super("RotatorMove");
-		requires(rotator);
+		super("ClimberMove");
+		requires(climber);
 	}
 
 	// Called just before this Command runs the first time
@@ -35,7 +35,7 @@ public class RotatorMove extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		rotator.move(xboxController.getY(Hand.kRight));
+		climber.move(xboxController.getY(Hand.kRight));
 //		System.out.println("count: " + enc.get());
 //		System.out.println("distance: " + enc.getDistance());
 //		System.out.println("direction: " + enc.getDirection());
@@ -49,7 +49,7 @@ public class RotatorMove extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		rotator.stop();
+		climber.stop();
 	}
 
 	// Called when another command which requires one or more of the same
