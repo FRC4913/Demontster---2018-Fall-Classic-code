@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4913.robot.commands;
 
 import static org.usfirst.frc.team4913.robot.OI.xboxController;
-import static org.usfirst.frc.team4913.robot.OI.joystick;
 import static org.usfirst.frc.team4913.robot.Robot.grabber;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -18,7 +17,7 @@ public class GrabberClose extends Command {
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		super("BlockRelease");
+		super("GrabberClose");
 		requires(grabber);
 	}
 

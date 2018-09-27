@@ -52,7 +52,7 @@ public class AutonomousOutsideDrive extends Command {
 		requires(grabber);
 		requires(rotator);
 		//requires(actuator);
-//		requires(elevator);
+		//requires(elevator);
 		requires(arm);
 		this.direction = direction;
 		this.deliverCube = deliverCube;
@@ -68,18 +68,19 @@ public class AutonomousOutsideDrive extends Command {
 	protected void execute() {
 		double timerVal = timer.get();
 		
-		if(timerVal < actuatorTime)
+		/*if(timerVal < actuatorTime)
 			//actuator.up();
 			arm.up();
-		else if (timerVal >= actuatorTime && timerVal < go_straight) {
+		else */
+		if (timerVal >= actuatorTime && timerVal < go_straight) {
 			//actuator.stop();
 			driveSubsystem.arcadeDrive(-0.7, 0.2);
 		}
 		else{
 			if (deliverCube) {
 			if (timerVal >= GO_STRAIGHT && timerVal < turnTime) {
-//				elevator.up();
-				arm.up();
+				//elevator.up();
+				//arm.up();
 				if (direction == Robot.TURN.LEFT) {
 					driveSubsystem.arcadeDrive(0.0, -0.9);// turn left
 				} else {
@@ -87,20 +88,25 @@ public class AutonomousOutsideDrive extends Command {
 				}
 			} else if (timerVal >= turnTime && timerVal < approachTime) {
 				driveSubsystem.arcadeDrive(-0.5, 0.2); // forward
-//				intaker.intakeBlock();
-//				elevator.up();
+				//intaker.intakeBlock();
+				//elevator.up();
 			} else if (timerVal >= approachTime && timerVal < rotatorTime) {
 				driveSubsystem.stopMotor();
-				grabber.open();
-				rotator.move(-1);
-//				elevator.stop();
-			}else if (timerVal >= rotatorTime && timerVal < rotatorWaitTime) {
+				//grabber.open();
+				//rotator.move(-1);
+				//elevator.stop();
+			}
+			/*else if (timerVal >= rotatorTime && timerVal < rotatorWaitTime) {
 				rotator.stop();
-			}
-			else if (timerVal >= rotatorWaitTime && timerVal < deliverTime) {
+			}*/
+			
+			
+			/*else if (timerVal >= rotatorWaitTime && timerVal < deliverTime) {
 				grabber.close();
-//				elevator.stop();
-			}
+				elevator.stop();
+			}*/
+			
+			
 			else
 				isFinished = true;
 		} else {

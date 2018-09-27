@@ -26,12 +26,20 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	public static XboxController xboxController = new XboxController(RobotMap.XBOX_CONTROLLER_PORT);
-
 	
+	
+	//B & X used for grabber. B for oPening (say it in your head) and X for cloSing
+	public Button xboxButtonB = new JoystickButton(xboxController, 2);//open grabber
+	public Button xboxButtonX = new JoystickButton(xboxController, 3);//close grabber
+	
+	
+	//Y & A used for rotator. Y is for raising, A for lowering. Makes sense because Y is above A
+	public Button xboxButtonY = new JoystickButton(xboxController, 4);//raise rotator. It's above button A
+	public Button xboxButtonA = new JoystickButton(xboxController, 1);//lowers rotator. Below button Y, so
 
 	// left and right bumpers
-	public Button xboxButton5 = new JoystickButton(xboxController, 5);
-	public Button xboxButton6 = new JoystickButton(xboxController, 6);
+	public Button xboxButtonLB = new JoystickButton(xboxController, 5);
+	public Button xboxButtonRB = new JoystickButton(xboxController, 6);
 
 
 	// There are a few additional built in buttons you can use. Additionally,
@@ -39,9 +47,13 @@ public class OI {
 	// commands the same as any other Bu	tton.
 
 	public OI() {
-		xboxButton5.whileHeld(new GrabberClose());
-		//xboxButton6.whileHeld(new BlockRelease());
-
+		xboxButtonB.whileHeld(new GrabberOpen());
+		xboxButtonX.whileHeld(new GrabberClose());
+		
+		xboxButtonY.whileHeld(new RotatorUp());
+		xboxButtonA.whileHeld(new RotatorDown());
+		
+		xboxButtonLB.whenPressed(new MaintainHeight());
 		
 		/*
 		 * xboxButton5.toggleWhenActive(new BlockIntake());

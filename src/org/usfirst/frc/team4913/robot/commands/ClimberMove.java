@@ -14,8 +14,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ClimberMove extends Command {
 	
-	private Encoder enc;
-	private static final int DISTANCE_PER_PULSE = 1;
 	
 	public ClimberMove() {
 		// Use requires() here to declare subsystem dependencies
@@ -26,16 +24,11 @@ public class ClimberMove extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-//		/***** Encoder SetUp *******/
-//		enc = new Encoder(RobotMap.ENC_SOURCE_1, RobotMap.ENC_SOURCE_2);
-//		enc.setDistancePerPulse(DISTANCE_PER_PULSE);
-//		enc.reset();
-		//enc.setReverseDirection(true);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		climber.move(xboxController.getY(Hand.kRight));
+		climber.move(-xboxController.getY(Hand.kRight));
 //		System.out.println("count: " + enc.get());
 //		System.out.println("distance: " + enc.getDistance());
 //		System.out.println("direction: " + enc.getDirection());

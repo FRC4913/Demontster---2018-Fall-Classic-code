@@ -125,11 +125,11 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void arcadeDrive() {
-		yJoystickInput = OI.joystick.getY();
+		yJoystickInput = OI.xboxController.getY(Hand.kLeft);//OI.joystick.getY();
 		yDiff = yJoystickInput - ySpeed;
 		scaledYDiff = yDiff * ySpeedScale;
 		ySpeed += scaledYDiff;
-		robotDrive.arcadeDrive(ySpeed, OI.joystick.getX());
+		robotDrive.arcadeDrive(ySpeed, OI.xboxController.getX(Hand.kLeft));
 	}
 
 	public void arcadeDrive(double ySpeed, double xSpeed) {

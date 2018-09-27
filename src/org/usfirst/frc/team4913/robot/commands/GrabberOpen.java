@@ -13,7 +13,7 @@ public class GrabberOpen extends Command {
 	public GrabberOpen() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		super("BlockIntake");
+		super("GrabberOpen");
 		requires(grabber);
 	}
 

@@ -15,7 +15,7 @@ public class ArmDown extends Command {
 	public ArmDown() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		super("ElevatorDown");
+		super("ArmDown");
 		requires(arm);
 	}
 

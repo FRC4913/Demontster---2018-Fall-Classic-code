@@ -84,9 +84,11 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData(rotator);
 		SmartDashboard.putData(driveSubsystem);
 		SmartDashboard.putData("ArmUp", new ArmUp());
+		SmartDashboard.putData("ArmDown", new ArmDown());
 		SmartDashboard.putData("ClimberMove", new ClimberMove());
-		SmartDashboard.putData("GrabberOpen", new GrabberOpen());
 		SmartDashboard.putData("GrabberClose", new GrabberClose());
+		SmartDashboard.putData("GrabberOpen", new GrabberOpen());
+		SmartDashboard.putData("MaintainHeight", new MaintainHeight());
 		SmartDashboard.putData("RotatorDown", new RotatorDown());
 		SmartDashboard.putData("RotatorUp", new RotatorUp());
 		prefs = Preferences.getInstance();
@@ -216,8 +218,8 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("left trigger", OI.xboxController.getTriggerAxis(Hand.kLeft));
 		SmartDashboard.putNumber("right trigger", OI.xboxController.getTriggerAxis(Hand.kRight));
-		SmartDashboard.putNumber("left button", OI.xboxController.getY(Hand.kLeft));
-		SmartDashboard.putNumber("right button", OI.xboxController.getY(Hand.kRight));
+		SmartDashboard.putNumber("left stick", OI.xboxController.getY(Hand.kLeft));
+		SmartDashboard.putNumber("right stick", OI.xboxController.getY(Hand.kRight));
 	}
 
 	/**

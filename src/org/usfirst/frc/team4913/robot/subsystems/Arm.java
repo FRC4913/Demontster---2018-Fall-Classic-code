@@ -16,8 +16,8 @@ public class Arm extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	public static double ELEVATOR_UP_SPEED = 1.0;
-	public static double ELEVATOR_DOWN_SPEED = -1.0;
+	public static double ARM_UP_SPEED = 0.3;
+	public static double ARM_DOWN_SPEED = -0.3;
 
 
 	WPI_TalonSRX armMotor = new WPI_TalonSRX(RobotMap.ARM_MOTOR_ID);
@@ -28,11 +28,11 @@ public class Arm extends Subsystem {
 	}
 
 	public void up() {
-		armMotor.set(ELEVATOR_UP_SPEED);
+		armMotor.set(ARM_UP_SPEED);
 	}
 
 	public void down() {
-		armMotor.set(ELEVATOR_DOWN_SPEED);
+		armMotor.set(ARM_DOWN_SPEED);
 	}
 
 	public void stop() {

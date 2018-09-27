@@ -12,7 +12,7 @@ public class RotatorUp extends Command {
 	public RotatorUp() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		super("HookUp");
+		super("RotatorUp");
 		requires(rotator);
 	}
 

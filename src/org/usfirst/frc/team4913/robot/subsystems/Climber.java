@@ -48,14 +48,11 @@ public class Climber extends Subsystem {
 	}
 
 	public void move(double speed) {
-
-		
 			if(speed > 0) {
 				climberMotor.set(Math.pow(speed, 2));
 			}else
 				climberMotor.set(-Math.pow(speed, 2));
 			//System.out.println(rotatorMotor.getSensorCollection().getPulseWidthPosition());
-		
 	}
 	
 	

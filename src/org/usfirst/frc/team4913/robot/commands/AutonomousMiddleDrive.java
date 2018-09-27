@@ -31,21 +31,20 @@ public class AutonomousMiddleDrive extends Command {
 	private static final double ROTATOR_TIME = 0.55;
 	private static final double ROTATOR_WAIT_TIME = 1.5;
 	
-	private double waitTime = INIT_WAIT_TIME;
-	private double actuatorTime = waitTime + ACTUATOR_TIME;
-	private double initFwdTime = actuatorTime + INIT_FWD_TIME;
-	private double turn1stTime = initFwdTime + TURN_90_TIME;
-	private double positionTime = turn1stTime + POSITION_TIME;
-	private double turn2ndTime = positionTime + TURN_90_TIME;
-	private double approachTime = turn2ndTime + APPROACH_TIME;
-	private double visionMiddleTime = approachTime + VISION_TIME;
-	private double rotatorTime = approachTime + ROTATOR_TIME;
-	private double rotatorWaitTime = approachTime + ROTATOR_WAIT_TIME;
-	private double deliverTime = rotatorWaitTime + DELIVER_CUBE;
+	private double waitTime = INIT_WAIT_TIME;//== 2.5
+	private double actuatorTime = waitTime + ACTUATOR_TIME;//== 2.5 + 1.6 == 4.1
+	private double initFwdTime = actuatorTime + INIT_FWD_TIME;//== 4.1 + 0.5 == 4.6
+	private double turn1stTime = initFwdTime + TURN_90_TIME;//== 4.6 + 0.5 == 5.1
+	private double positionTime = turn1stTime + POSITION_TIME;//== 5.1 + 1.5 == 6.6
+	private double turn2ndTime = positionTime + TURN_90_TIME;//== 6.6 + 0.5 == 7.1
+	private double approachTime = turn2ndTime + APPROACH_TIME;//== 7.1 + 1.6 == 8.7
+	private double visionMiddleTime = approachTime + VISION_TIME;//== 8.7 + 3.0 == 11.7
+	private double rotatorTime = approachTime + ROTATOR_TIME;//== 8.7 + 0.55 == 9.25
+	private double rotatorWaitTime = approachTime + ROTATOR_WAIT_TIME;//== 8.7 + 1.5 == 10.2
+	private double deliverTime = rotatorWaitTime + DELIVER_CUBE;//== 10.2 + 3.0 == 13.2
 
 	public AutonomousMiddleDrive(TURN direction, boolean deliverCube, boolean useVision) {
 		requires(driveSubsystem);
-//		requires(elevator);
 		requires(rotator);
 		requires(grabber);
 		this.direction = direction;
@@ -63,8 +62,15 @@ public class AutonomousMiddleDrive extends Command {
 		double timerVal = timer.get();
 		if (timerVal < waitTime)
 			driveSubsystem.stopMotor();
-		else if(timerVal >= waitTime && timerVal < actuatorTime)
-			actuator.up();
+		
+		
+		
+		/*else if(timerVal >= waitTime && timerVal < actuatorTime)
+			actuator.up();*/
+		
+		
+		
+		
 		else if(timerVal >= actuatorTime && timerVal < initFwdTime) {
 			//actuator.stop();
 			driveSubsystem.arcadeDrive(-0.7, 0.2);
@@ -93,12 +99,12 @@ public class AutonomousMiddleDrive extends Command {
 		}
 		 else if (timerVal >= approachTime && timerVal < rotatorTime) {
 				driveSubsystem.stopMotor();
-				grabber.open();
-				rotator.move(-0.95);
-//				elevator.stop();
+				//grabber.open();
+				//rotator.move(-0.95);
+				//elevator.stop();
 			}else if (timerVal >= rotatorTime && timerVal < rotatorWaitTime) {
-				grabber.open();
-				rotator.stop();
+				//grabber.open();
+				//rotator.stop();
 			}
 			else if (timerVal >= rotatorWaitTime && timerVal < deliverTime) {
 				grabber.close();
@@ -117,9 +123,9 @@ public class AutonomousMiddleDrive extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		grabber.stop();
-		actuator.stop();
+		//actuator.stop();
 		rotator.stop();
-		elevator.stop();
+		arm.stop();
 		driveSubsystem.stopMotor();
 	}
 
