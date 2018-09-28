@@ -29,17 +29,22 @@ public class OI {
 	
 	
 	//B & X used for grabber. B for oPening (say it in your head) and X for cloSing
-	public Button xboxButtonB = new JoystickButton(xboxController, 2);//open grabber
-	public Button xboxButtonX = new JoystickButton(xboxController, 3);//close grabber
+	public Button GrabberOpen = new JoystickButton(xboxController, 2);//open grabber
+	public Button GrabberClose = new JoystickButton(xboxController, 3);//close grabber
 	
 	
 	//Y & A used for rotator. Y is for raising, A for lowering. Makes sense because Y is above A
-	public Button xboxButtonY = new JoystickButton(xboxController, 4);//raise rotator. It's above button A
-	public Button xboxButtonA = new JoystickButton(xboxController, 1);//lowers rotator. Below button Y, so
+	public Button RotatorUp = new JoystickButton(xboxController, 4);//raise rotator. It's above button A
+	public Button RotatorDown = new JoystickButton(xboxController, 1);//lowers rotator. Below button Y, so
 
+	
+	public Button ArmUp = new JoystickButton(xboxController, 8);//Start button to raise
+	public Button ArmDown = new JoystickButton(xboxController, 7);//Back button to lower
+	
+	
+	
 	// left and right bumpers
-	public Button xboxButtonLB = new JoystickButton(xboxController, 5);
-	public Button xboxButtonRB = new JoystickButton(xboxController, 6);
+	public Button ArmKeepLB = new JoystickButton(xboxController, 5);
 
 
 	// There are a few additional built in buttons you can use. Additionally,
@@ -47,13 +52,18 @@ public class OI {
 	// commands the same as any other Bu	tton.
 
 	public OI() {
-		xboxButtonB.whileHeld(new GrabberOpen());
-		xboxButtonX.whileHeld(new GrabberClose());
+		GrabberOpen.whileHeld(new GrabberOpen());
+		GrabberClose.whileHeld(new GrabberClose());
 		
-		xboxButtonY.whileHeld(new RotatorUp());
-		xboxButtonA.whileHeld(new RotatorDown());
+		RotatorUp.whileHeld(new RotatorUp());
+		RotatorDown.whileHeld(new RotatorDown());
 		
-		xboxButtonLB.whenPressed(new MaintainHeight());
+		ArmKeepLB.whenPressed(new MaintainHeight());
+		
+		ArmUp.whileHeld(new ArmUp());
+		ArmDown.whileHeld(new ArmDown());
+		
+		
 		
 		/*
 		 * xboxButton5.toggleWhenActive(new BlockIntake());

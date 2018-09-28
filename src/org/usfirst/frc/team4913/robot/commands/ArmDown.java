@@ -25,7 +25,7 @@ public class ArmDown extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (xboxController.getTriggerAxis(Hand.kRight) >= TRIGGER_THRESHOLD) 
+		//if (xboxController.getTriggerAxis(Hand.kRight) >= TRIGGER_THRESHOLD) 
 		arm.down();
 	}
 

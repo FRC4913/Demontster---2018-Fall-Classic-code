@@ -16,7 +16,7 @@ public class Arm extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	public static double ARM_UP_SPEED = 0.3;
+	public static double ARM_UP_SPEED = 0.75;
 	public static double ARM_DOWN_SPEED = -0.3;
 
 

@@ -18,19 +18,19 @@ public class Grabber extends Subsystem {
 	DigitalInput grabberSwitch = new DigitalInput(2);
 	//Limit switch is Normally Closed, so unpressed returns True, pressed returns False
 	//True is unpressed, False is pressed
-	public static double CLOSE_SPEEDCONSTANT = 0.2; // IN
-	public static double OPEN_SPEEDCONSTANT = - 0.2; // OUT
+	public static double CLOSE_SPEEDCONSTANT = 0.75; // IN
+	public static double OPEN_SPEEDCONSTANT = - 0.75; // OUT
 	public static double STOP_SPEEDCONSTANT = 0.0;
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		setDefaultCommand(new GrabberOpen());
+		//setDefaultCommand(new GrabberOpen());
 	}
 
 	public void close() {
-		if(grabberSwitch.get() == true) //limit switch is not pressed
+		if(grabberSwitch.get() == false) //limit switch is pressed
 			grabberMotor.set(CLOSE_SPEEDCONSTANT);
-		else //limit switch is pressed
+		else //limit switch is not pressed
 			grabberMotor.set(STOP_SPEEDCONSTANT);
 	}
 
