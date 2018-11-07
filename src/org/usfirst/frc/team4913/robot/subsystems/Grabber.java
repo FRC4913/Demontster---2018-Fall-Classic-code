@@ -19,7 +19,7 @@ public class Grabber extends Subsystem {
 	//Limit switch is Normally Closed, so unpressed returns True, pressed returns False
 	//True is unpressed, False is pressed
 	public static double CLOSE_SPEEDCONSTANT = 0.75; // IN
-	public static double OPEN_SPEEDCONSTANT = - 0.75; // OUT
+	public static double OPEN_SPEEDCONSTANT = - 1; // OUT
 	public static double STOP_SPEEDCONSTANT = 0.0;
 
 	public void initDefaultCommand() {

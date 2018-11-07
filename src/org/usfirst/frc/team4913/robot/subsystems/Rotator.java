@@ -23,7 +23,7 @@ public class Rotator extends Subsystem {
 
 	WPI_TalonSRX rotatorMotor = new WPI_TalonSRX(RobotMap.ROTATOR_MOTOR_ID);
 
-	public static double ROTATOR_UP_SPEED = -0.6;
+	public static double ROTATOR_UP_SPEED = -0.85;
 	public static double ROTATOR_DOWN_SPEED = 0.35;
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
